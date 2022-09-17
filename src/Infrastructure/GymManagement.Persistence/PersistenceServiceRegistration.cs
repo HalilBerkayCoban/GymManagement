@@ -16,7 +16,8 @@ namespace GymManagement.Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddSingleton<IMemberRepository, MemberRepository>();
+            services.AddDbContext<BaseDbContext>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
 
             return services;
         }

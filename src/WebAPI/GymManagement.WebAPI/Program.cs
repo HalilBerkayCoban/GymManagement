@@ -1,3 +1,4 @@
+using GymManagement.Application;
 using GymManagement.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddSwaggerGen();
 
 //add layers services
 builder.Services.AddPersistenceServices();
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 

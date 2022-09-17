@@ -1,4 +1,7 @@
-﻿using GymManagement.Application.Services.Repositories;
+﻿using GymManagement.Application.Dtos.Member;
+using GymManagement.Application.Features.Members.Commands.CreateMember;
+using GymManagement.Application.Services.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,18 +11,18 @@ namespace GymManagement.WebAPI.Controllers
     [ApiController]
     public class MembersController : ControllerBase
     {
-        IMemberRepository _memberRepository;
+        private readonly IMediator _meditor;
 
-        public MembersController(IMemberRepository memberRepository)
+        public MembersController(IMediator meditor)
         {
-            _memberRepository = memberRepository;
+            _meditor = meditor;
         }
 
-        //[HttpGet]
-        //public IActionResult Get()
-        //{
-        //    var members = _memberRepository.GetAsync();
-        //    return Ok(members);
-        //}
+        [HttpPost]
+        public async Task<IActionResult> AddMember([FromBody] CreateMemberCommand createMemberCommand)
+        {
+            CreatedMemberDto result = await _meditor.Send(createMemberCommand);
+            return Created("", result);
+        }
     }
 }
