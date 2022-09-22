@@ -1,6 +1,9 @@
 ﻿using GymManagement.Application.Dtos.Member;
 using GymManagement.Application.Features.Members.Commands.CreateMember;
-using GymManagement.Application.Services.Repositories;
+using GymManagement.Application.Features.Members.Models;
+using GymManagement.Application.Features.Members.Queries.GetAllMembers;
+using GymManagement.Application.Requests;
+using GymManagement.Application.Interfaces.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +26,14 @@ namespace GymManagement.WebAPI.Controllers
         {
             CreatedMemberDto result = await _meditor.Send(createMemberCommand);
             return Created("", result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllMembers([FromQuery] PageRequest pageRequest)
+        {
+            GetAllMembersQuery getAllMembersQuery = new() {PageRequest = pageRequest};
+            MemberListModel memberListModel = await _meditor.Send(getAllMembersQuery);
+            return Ok(memberListModel);
         }
     }
 }

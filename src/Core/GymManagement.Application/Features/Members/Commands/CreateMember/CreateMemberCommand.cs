@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GymManagement.Application.Dtos.Member;
-using GymManagement.Application.Services.Repositories;
+using GymManagement.Application.Interfaces.Repositories;
 using GymManagement.Domain.Entities;
 using MediatR;
 using System;

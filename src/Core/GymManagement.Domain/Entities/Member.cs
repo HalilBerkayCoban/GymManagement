@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GymManagement.Domain.Entities
 {
-    public class Member: BaseEntity
+    public class Member : BaseEntity
     {
-        public int MemberId { get; set; }
+        public int MemberNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -18,5 +18,27 @@ namespace GymManagement.Domain.Entities
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public bool Status { get; set; }
+        public Trainer Trainer { get; set; }
+
+        public Member()
+        {
+
+        }
+
+        public Member(Guid id, DateTimeOffset createdAt, DateTimeOffset updatedAt, int memberNumber, string firstName, string lastName, DateTime dateOfBirth, double weight, decimal height, string phoneNumber, string email, bool status) : this()
+        {
+            Id = id;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            MemberNumber = memberNumber;
+            FirstName = firstName;
+            LastName = lastName;
+            DateOfBirth = dateOfBirth;
+            Weight = weight;
+            Height = height;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Status = status;
+        }
     }
 }

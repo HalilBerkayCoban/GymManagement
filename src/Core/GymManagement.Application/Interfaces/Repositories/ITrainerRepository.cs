@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GymManagement.Application.Interfaces.Repositories
 {
-    public interface IMemberRepository: IAsyncRepository<Member>, IRepository<Member>
+    public interface ITrainerRepository : IAsyncRepository<Trainer>, IRepository<Trainer>
     {
     }
 }

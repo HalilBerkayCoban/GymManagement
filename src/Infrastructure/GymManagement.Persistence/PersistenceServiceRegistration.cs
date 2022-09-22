@@ -1,4 +1,4 @@
-﻿using GymManagement.Application.Services.Repositories;
+﻿using GymManagement.Application.Interfaces.Repositories;
 using GymManagement.Persistence.Context;
 using GymManagement.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +18,7 @@ namespace GymManagement.Persistence
         {
             services.AddDbContext<BaseDbContext>();
             services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<ITrainerRepository, TrainerRepository>();
 
             return services;
         }
