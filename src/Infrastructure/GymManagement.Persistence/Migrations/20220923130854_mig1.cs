@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GymManagement.Persistence.Migrations
 {
-    public partial class mig2 : Migration
+    public partial class mig1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,8 @@ namespace GymManagement.Persistence.Migrations
                 name: "Trainers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TrainerNumber = table.Column<int>(type: "int", nullable: false),
+                    TrainerNumber = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Branch = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -26,15 +26,16 @@ namespace GymManagement.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Trainers", x => x.Id);
+                    table.PrimaryKey("PK_Trainers", x => x.TrainerNumber);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Members",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MemberNumber = table.Column<int>(type: "int", nullable: false),
+                    MemberNumber = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TrainerNumber = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -43,25 +44,24 @@ namespace GymManagement.Persistence.Migrations
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
-                    TrainerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Members", x => x.Id);
+                    table.PrimaryKey("PK_Members", x => x.MemberNumber);
                     table.ForeignKey(
-                        name: "FK_Members_Trainers_TrainerId",
-                        column: x => x.TrainerId,
+                        name: "FK_Members_Trainers_TrainerNumber",
+                        column: x => x.TrainerNumber,
                         principalTable: "Trainers",
-                        principalColumn: "Id",
+                        principalColumn: "TrainerNumber",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Members_TrainerId",
+                name: "IX_Members_TrainerNumber",
                 table: "Members",
-                column: "TrainerId");
+                column: "TrainerNumber");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

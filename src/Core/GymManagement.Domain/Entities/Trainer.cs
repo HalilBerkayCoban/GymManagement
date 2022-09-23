@@ -17,5 +17,23 @@ namespace GymManagement.Domain.Entities
         public string Email { get; set; }
         public bool Status { get; set; }
         public ICollection<Member> Members { get; set; }
+
+        public Trainer()
+        {
+
+        }
+
+        public Trainer(int trainerNumber, string firstName, string lastName, string branch, string phoneNumber, string email, bool status, DateTimeOffset createadAt, DateTimeOffset updatedAt) : this()
+        {
+            TrainerNumber = trainerNumber;
+            FirstName = firstName;
+            LastName = lastName;
+            Branch = branch;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Status = status;
+            CreatedAt = createadAt;
+            UpdatedAt = updatedAt;
+        }
     }
 }

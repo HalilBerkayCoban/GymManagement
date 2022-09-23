@@ -10,6 +10,7 @@ namespace GymManagement.Domain.Entities
     public class Member : BaseEntity
     {
         public int MemberNumber { get; set; }
+        public int TrainerNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -25,12 +26,12 @@ namespace GymManagement.Domain.Entities
 
         }
 
-        public Member(Guid id, DateTimeOffset createdAt, DateTimeOffset updatedAt, int memberNumber, string firstName, string lastName, DateTime dateOfBirth, double weight, decimal height, string phoneNumber, string email, bool status) : this()
+        public Member(DateTimeOffset createdAt, DateTimeOffset updatedAt, int memberNumber, int trainerNumber, string firstName, string lastName, DateTime dateOfBirth, double weight, decimal height, string phoneNumber, string email, bool status) : this()
         {
-            Id = id;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
             MemberNumber = memberNumber;
+            TrainerNumber = trainerNumber;
             FirstName = firstName;
             LastName = lastName;
             DateOfBirth = dateOfBirth;

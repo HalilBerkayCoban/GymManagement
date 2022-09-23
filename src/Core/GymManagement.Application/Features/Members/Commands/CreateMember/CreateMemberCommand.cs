@@ -13,10 +13,10 @@ namespace GymManagement.Application.Features.Members.Commands.CreateMember
 {
     public class CreateMemberCommand: IRequest<CreatedMemberDto>
     {
-        public Guid Id { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset UpdatedAt { get; set; }
-        public int MemberId { get; set; }
+        public int MemberNumber { get; set; }
+        public int TrainerNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }

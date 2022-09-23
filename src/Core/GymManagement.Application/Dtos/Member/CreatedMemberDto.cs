@@ -8,6 +8,7 @@ namespace GymManagement.Application.Dtos.Member
 {
     public class CreatedMemberDto
     {
+        public int TrainerNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }

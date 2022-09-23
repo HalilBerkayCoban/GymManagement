@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GymManagement.Application.Dtos.Member;
-using GymManagement.Application.Features.Members.Models;
+using GymManagement.Application.Features.Models;
 using GymManagement.Application.Interfaces.Paging;
 using GymManagement.Application.Requests;
 using GymManagement.Application.Interfaces.Repositories;
@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace GymManagement.Application.Features.Members.Queries.GetAllMembers
 {
@@ -30,7 +31,7 @@ namespace GymManagement.Application.Features.Members.Queries.GetAllMembers
 
             public async Task<MemberListModel> Handle(GetAllMembersQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<Member> members = await _memberRepository.GetListAsync(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+                IPaginate<Member> members = await _memberRepository.GetListAsync(include: m => m.Include(i => i.Trainer), index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
                 MemberListModel memberListModel = _mapper.Map<MemberListModel>(members);
 

@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using GymManagement.Application.Features.Rules;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,9 @@ namespace GymManagement.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<MemberBusinessRules>();
 
             return services;
         }

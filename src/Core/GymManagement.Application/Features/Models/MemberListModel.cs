@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GymManagement.Application.Features.Members.Models
+namespace GymManagement.Application.Features.Models
 {
     public class MemberListModel: BasePageableModel
     {

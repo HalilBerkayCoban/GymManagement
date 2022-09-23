@@ -13,10 +13,9 @@ namespace GymManagement.Application.Features.Trainers.Commands.CreateTrainer
 {
     public class CreateTrainerCommand: IRequest<CreatedTrainerDto>
     {
-        public Guid Id { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset UpdatedAt { get; set; }
-        public int TrainerId { get; set; }
+        public int TrainerNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Branch { get; set; }
