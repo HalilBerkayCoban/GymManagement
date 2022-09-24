@@ -13,8 +13,8 @@ namespace GymManagement.Application.Features.Members.Commands.UpdateMember
 {
     public class UpdateMemberCommand: IRequest<UpdatedMemberDto>
     {
-        public int MemberNumber { get; set; }
-        public int TrainerNumber { get; set; }
+        public int Id { get; set; }
+        public int TrainerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -38,9 +38,9 @@ namespace GymManagement.Application.Features.Members.Commands.UpdateMember
 
             public async Task<UpdatedMemberDto> Handle(UpdateMemberCommand request, CancellationToken cancellationToken)
             {
-                Member? member = await _memberRepository.GetAsync(i => i.MemberNumber == request.MemberNumber);
+                Member? member = await _memberRepository.GetAsync(i => i.Id == request.Id);
 
-                member.TrainerNumber = request.TrainerNumber;
+                member.TrainerId= request.TrainerId;
                 member.FirstName = request.FirstName;
                 member.LastName = request.LastName;
                 member.Email = request.Email;

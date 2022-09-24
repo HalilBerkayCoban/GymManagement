@@ -9,7 +9,7 @@ namespace GymManagement.Application.Dtos.Trainer
 {
     public class TrainerListDto
     {
-        public int TrainerNumber { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Branch { get; set; }

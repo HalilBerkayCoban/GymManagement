@@ -13,7 +13,7 @@ namespace GymManagement.Application.Features.Members.Commands.DeleteMember
         {
             public DeleteByMemberNumberCommandValidator()
             {
-                RuleFor(b => b.MemberNumber).NotEmpty();
+                RuleFor(m => m.Id).NotEmpty();
             }
         }
     }

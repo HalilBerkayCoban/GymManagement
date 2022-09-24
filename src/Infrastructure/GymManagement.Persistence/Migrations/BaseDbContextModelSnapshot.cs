@@ -24,12 +24,12 @@ namespace GymManagement.Persistence.Migrations
 
             modelBuilder.Entity("GymManagement.Domain.Entities.Member", b =>
                 {
-                    b.Property<int>("MemberNumber")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("MemberNumber");
+                        .HasColumnName("Id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberNumber"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetimeoffset")
@@ -67,9 +67,9 @@ namespace GymManagement.Persistence.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("Status");
 
-                    b.Property<int>("TrainerNumber")
+                    b.Property<int>("TrainerId")
                         .HasColumnType("int")
-                        .HasColumnName("TrainerNumber");
+                        .HasColumnName("TrainerId");
 
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("datetimeoffset")
@@ -79,21 +79,21 @@ namespace GymManagement.Persistence.Migrations
                         .HasColumnType("float")
                         .HasColumnName("Weight");
 
-                    b.HasKey("MemberNumber");
+                    b.HasKey("Id");
 
-                    b.HasIndex("TrainerNumber");
+                    b.HasIndex("TrainerId");
 
                     b.ToTable("Members", (string)null);
                 });
 
             modelBuilder.Entity("GymManagement.Domain.Entities.Trainer", b =>
                 {
-                    b.Property<int>("TrainerNumber")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("TrainerNumber");
+                        .HasColumnName("Id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TrainerNumber"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Branch")
                         .IsRequired()
@@ -103,6 +103,9 @@ namespace GymManagement.Persistence.Migrations
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("datetimeoffset")
                         .HasColumnName("CreatedAt");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -132,7 +135,7 @@ namespace GymManagement.Persistence.Migrations
                         .HasColumnType("datetimeoffset")
                         .HasColumnName("UpdatedAt");
 
-                    b.HasKey("TrainerNumber");
+                    b.HasKey("Id");
 
                     b.ToTable("Trainers", (string)null);
                 });
@@ -141,7 +144,7 @@ namespace GymManagement.Persistence.Migrations
                 {
                     b.HasOne("GymManagement.Domain.Entities.Trainer", "Trainer")
                         .WithMany("Members")
-                        .HasForeignKey("TrainerNumber")
+                        .HasForeignKey("TrainerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

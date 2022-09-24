@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GymManagement.Application.Features.Rules
 {
-    public class MemberBusinessRules
+    public class MemberBusinessRules: CommonBusinessRules
     {
         private readonly IMemberRepository _memberRepository;
 

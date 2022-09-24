@@ -8,7 +8,7 @@ namespace GymManagement.Application.Dtos.Member
 {
     public class DeletedMemberDto
     {
-        public int MemberNumber { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }

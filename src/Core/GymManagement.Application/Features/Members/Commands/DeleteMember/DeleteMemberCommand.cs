@@ -14,7 +14,7 @@ namespace GymManagement.Application.Features.Members.Commands.DeleteMember
 {
     public class DeleteMemberCommand: IRequest<DeletedMemberDto>
     {
-        public int MemberNumber { get; set; }
+        public int Id { get; set; }
         public class DeleteMemberCommandHandler : IRequestHandler<DeleteMemberCommand, DeletedMemberDto>
         {
             private readonly IMemberRepository _memberRepository;
@@ -30,7 +30,7 @@ namespace GymManagement.Application.Features.Members.Commands.DeleteMember
 
             public async Task<DeletedMemberDto> Handle(DeleteMemberCommand request, CancellationToken cancellationToken)
             {
-                Member? member = await _memberRepository.GetAsync(i => i.MemberNumber == request.MemberNumber);
+                Member? member = await _memberRepository.GetAsync(i => i.Id == request.Id);
                 await _memberBusinessRules.MemberShouldExistWhenRequested(member);
                 Member deletedMember =  await _memberRepository.DeleteAsync(member);
                 DeletedMemberDto deletedMemberDto = _mapper.Map<DeletedMemberDto>(deletedMember);
