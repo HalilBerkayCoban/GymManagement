@@ -1,6 +1,8 @@
 ﻿using GymManagement.Application.Dtos.Trainer;
 using GymManagement.Application.Features.Models;
 using GymManagement.Application.Features.Trainers.Commands.CreateTrainer;
+using GymManagement.Application.Features.Trainers.Commands.DeleteTrainer;
+using GymManagement.Application.Features.Trainers.Commands.UpdateTrainer;
 using GymManagement.Application.Features.Trainers.Queries.GetAllTrainers;
 using GymManagement.Application.Requests;
 using MediatR;
@@ -33,6 +35,20 @@ namespace GymManagement.WebAPI.Controllers
             GetAllTrainersQuery getAllTrainersQuery = new() { PageRequest = pageRequest };
             TrainerListModel trainerListModel = await _meditor.Send(getAllTrainersQuery);
             return Ok(trainerListModel);
+        }
+
+        [HttpDelete("delete")]
+        public async Task<IActionResult> DeleteTrainer([FromQuery] DeleteTrainerCommand deleteMemberCommand)
+        {
+            DeletedTrainerDto result = await _meditor.Send(deleteMemberCommand);
+            return Ok(result);
+        }
+
+        [HttpPost("update")]
+        public async Task<IActionResult> UpdateTrainer([FromBody] UpdateTrainerCommand updateMemberCommand)
+        {
+            UpdatedTrainerDto result = await _meditor.Send(updateMemberCommand);
+            return Ok(result);
         }
     }
 }

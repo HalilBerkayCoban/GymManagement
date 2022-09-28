@@ -1,4 +1,5 @@
-﻿using GymManagement.Domain.Entities;
+﻿using GymManagement.Domain.Common;
+using GymManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,39 @@ namespace GymManagement.Persistence.Context
                 t.Property(p => p.Status).HasColumnName("Status");
                 t.HasMany(p => p.Members);
             });
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var datas = ChangeTracker.Entries<BaseEntity>();
+
+            foreach (var data in datas)
+            {
+                var _ = data.State switch
+                {
+                    EntityState.Added => data.Entity.CreatedAt = DateTimeOffset.UtcNow,
+                    EntityState.Modified => data.Entity.UpdatedAt = DateTimeOffset.UtcNow,
+                    _ => DateTimeOffset.UtcNow
+                };
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+        public override int SaveChanges()
+        {
+            var datas = ChangeTracker.Entries<BaseEntity>();
+
+            foreach (var data in datas)
+            {
+                var _ = data.State switch
+                {
+                    EntityState.Added => data.Entity.CreatedAt = DateTimeOffset.UtcNow,
+                    EntityState.Modified => data.Entity.UpdatedAt = DateTimeOffset.UtcNow,
+                    _ => DateTimeOffset.UtcNow
+                };
+            }
+            return base.SaveChanges();
         }
     }
 }

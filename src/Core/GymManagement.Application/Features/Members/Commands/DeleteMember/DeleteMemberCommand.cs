@@ -30,7 +30,7 @@ namespace GymManagement.Application.Features.Members.Commands.DeleteMember
 
             public async Task<DeletedMemberDto> Handle(DeleteMemberCommand request, CancellationToken cancellationToken)
             {
-                Member? member = await _memberRepository.GetAsync(i => i.Id == request.Id);
+                Member member = await _memberRepository.GetAsync(i => i.Id == request.Id);
                 await _memberBusinessRules.MemberShouldExistWhenRequested(member);
                 Member deletedMember =  await _memberRepository.DeleteAsync(member);
                 DeletedMemberDto deletedMemberDto = _mapper.Map<DeletedMemberDto>(deletedMember);

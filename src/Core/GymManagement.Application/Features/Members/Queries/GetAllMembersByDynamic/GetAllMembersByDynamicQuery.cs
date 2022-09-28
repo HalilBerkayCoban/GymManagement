@@ -32,7 +32,8 @@ namespace GymManagement.Application.Features.Members.Queries.GetAllMembersByDyna
 
             public async Task<MemberListModel> Handle(GetAllMembersByDynamicQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<Member> members = await _memberRepository.GetListByDynamicAsync(request.Dynamic, include: m => m.Include(i => i.Trainer), index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+                IPaginate<Member> members = await _memberRepository.GetListByDynamicAsync(request.Dynamic, include: m => m.Include(i => i.Trainer), 
+                    index: request.PageRequest.Page, size: request.PageRequest.PageSize, enableTracking: false);
 
                 MemberListModel memberListModel = _mapper.Map<MemberListModel>(members);
 

@@ -19,11 +19,10 @@ namespace GymManagement.Domain.Entities
 
         }
 
-        public Member(DateTimeOffset createdAt, DateTimeOffset updatedAt, int id, int trainerId, string firstName, string lastName, DateTime dateOfBirth, double weight, decimal height, string phoneNumber, string email, bool status) : this()
+        public Member(DateTimeOffset createdAt, int id, int trainerId, string firstName, string lastName, DateTime dateOfBirth, double weight, decimal height, string phoneNumber, string email, bool status) : this()
         {
             Id = id;
             CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
             TrainerId = trainerId;
             FirstName = firstName;
             LastName = lastName;

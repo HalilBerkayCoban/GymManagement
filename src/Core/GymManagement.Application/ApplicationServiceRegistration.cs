@@ -20,6 +20,7 @@ namespace GymManagement.Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddScoped<MemberBusinessRules>();
+            services.AddScoped<TrainerBusinessRules>();
 
             return services;
         }

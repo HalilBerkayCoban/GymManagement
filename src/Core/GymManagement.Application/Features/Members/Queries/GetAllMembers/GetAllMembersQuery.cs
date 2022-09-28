@@ -31,7 +31,7 @@ namespace GymManagement.Application.Features.Members.Queries.GetAllMembers
 
             public async Task<MemberListModel> Handle(GetAllMembersQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<Member> members = await _memberRepository.GetListAsync(include: m => m.Include(i => i.Trainer), index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+                IPaginate<Member> members = await _memberRepository.GetListAsync(include: m => m.Include(i => i.Trainer), index: request.PageRequest.Page, size: request.PageRequest.PageSize, enableTracking: false);
 
                 MemberListModel memberListModel = _mapper.Map<MemberListModel>(members);
 
