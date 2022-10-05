@@ -2,28 +2,14 @@
 using GymManagement.Application.Features.Auths.Commands.Register;
 using GymManagement.Infrastructure.Authentication.Dtos.User;
 using GymManagement.Infrastructure.Entities;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymManagement.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : BaseController
     {
-        private readonly IMediator _meditor;
-
-        protected string? GetIpAddress()
-        {
-            if (Request.Headers.ContainsKey("X-Forwarded-For")) return Request.Headers["X-Forwarded-For"];
-            return HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString();
-        }
-
-
-        public AuthController(IMediator meditor)
-        {
-            _meditor = meditor;
-        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
@@ -34,7 +20,7 @@ namespace GymManagement.WebAPI.Controllers
                 UserForRegisterDto = userForRegisterDto,
             };
 
-            RegisteredDto result = await _meditor.Send(registerCommand);
+            RegisteredDto result = await Mediator.Send(registerCommand);
             SetRefreshTokenToCookie(result.RefreshToken);
             return Created("", result.AccessToken);
         }
@@ -48,7 +34,7 @@ namespace GymManagement.WebAPI.Controllers
                 UserForLoginDto = userForLoginDto,
             };
 
-            LoggedDto result = await _meditor.Send(loginCommand);
+            LoggedDto result = await Mediator.Send(loginCommand);
             SetRefreshTokenToCookie(result.RefreshToken);
             return Created("", result.AccessToken);
         }

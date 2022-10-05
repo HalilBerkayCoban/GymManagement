@@ -14,19 +14,12 @@ namespace GymManagement.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MembersController : ControllerBase
+    public class MembersController : BaseController
     {
-        private readonly IMediator _meditor;
-
-        public MembersController(IMediator meditor)
-        {
-            _meditor = meditor;
-        }
-
         [HttpPost("add")]
         public async Task<IActionResult> AddMember([FromBody] CreateMemberCommand createMemberCommand)
         {
-            CreatedMemberDto result = await _meditor.Send(createMemberCommand);
+            CreatedMemberDto result = await Mediator.Send(createMemberCommand);
             return Created("", result);
         }
 
@@ -34,7 +27,7 @@ namespace GymManagement.WebAPI.Controllers
         public async Task<IActionResult> GetAllMembers([FromQuery] PageRequest pageRequest)
         {
             GetAllMembersQuery getAllMembersQuery = new() { PageRequest = pageRequest };
-            MemberListModel memberListModel = await _meditor.Send(getAllMembersQuery);
+            MemberListModel memberListModel = await Mediator.Send(getAllMembersQuery);
             return Ok(memberListModel);
         }
 
@@ -42,21 +35,21 @@ namespace GymManagement.WebAPI.Controllers
         public async Task<IActionResult> GetAllMembersByDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic)
         {
             GetAllMembersByDynamicQuery getAllMembersByDynamicQuery = new() { PageRequest = pageRequest, Dynamic = dynamic };
-            MemberListModel memberListModel = await _meditor.Send(getAllMembersByDynamicQuery);
+            MemberListModel memberListModel = await Mediator.Send(getAllMembersByDynamicQuery);
             return Ok(memberListModel);
         }
 
         [HttpDelete("delete")]
         public async Task<IActionResult> DeleteMember([FromQuery] DeleteMemberCommand deleteMemberCommand)
         {
-            DeletedMemberDto result = await _meditor.Send(deleteMemberCommand);
+            DeletedMemberDto result = await Mediator.Send(deleteMemberCommand);
             return Ok(result);
         }
 
         [HttpPost("update")]
         public async Task<IActionResult> UpdateMember([FromBody] UpdateMemberCommand updateMemberCommand)
         {
-            UpdatedMemberDto result = await _meditor.Send(updateMemberCommand);
+            UpdatedMemberDto result = await Mediator.Send(updateMemberCommand);
             return Ok(result);
         }
     }
