@@ -1,12 +1,7 @@
 ﻿using GymManagement.Application.Interfaces.Paging;
 using GymManagement.Domain.Common;
 using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GymManagement.Application.Interfaces.Repositories
 {

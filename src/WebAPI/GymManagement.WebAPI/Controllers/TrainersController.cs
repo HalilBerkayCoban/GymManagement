@@ -6,7 +6,6 @@ using GymManagement.Application.Features.Trainers.Commands.UpdateTrainer;
 using GymManagement.Application.Features.Trainers.Queries.GetAllTrainers;
 using GymManagement.Application.Requests;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymManagement.WebAPI.Controllers

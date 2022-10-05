@@ -7,11 +7,6 @@ using GymManagement.Application.Requests;
 using GymManagement.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GymManagement.Application.Features.Members.Queries.GetAllMembersByDynamic
 {

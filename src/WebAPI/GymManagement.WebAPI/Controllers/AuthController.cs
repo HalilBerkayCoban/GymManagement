@@ -3,7 +3,6 @@ using GymManagement.Application.Features.Auths.Commands.Register;
 using GymManagement.Infrastructure.Authentication.Dtos.User;
 using GymManagement.Infrastructure.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymManagement.WebAPI.Controllers

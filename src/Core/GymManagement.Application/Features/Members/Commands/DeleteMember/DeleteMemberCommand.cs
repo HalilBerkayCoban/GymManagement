@@ -4,11 +4,6 @@ using GymManagement.Application.Features.Rules;
 using GymManagement.Application.Interfaces.Repositories;
 using GymManagement.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GymManagement.Application.Features.Members.Commands.DeleteMember
 {
