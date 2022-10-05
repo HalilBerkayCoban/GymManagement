@@ -1,11 +1,7 @@
 ﻿using GymManagement.Domain.Common;
 using GymManagement.Domain.Entities;
+using GymManagement.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GymManagement.Persistence.Context
 {
@@ -13,6 +9,10 @@ namespace GymManagement.Persistence.Context
     {
         public DbSet<Member> Members { get; set; }
         public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -53,6 +53,29 @@ namespace GymManagement.Persistence.Context
                 t.Property(p => p.Email).HasColumnName("Email");
                 t.Property(p => p.Status).HasColumnName("Status");
                 t.HasMany(p => p.Members);
+            });
+
+            modelBuilder.Entity<User>(u =>
+            {
+                u.ToTable("Users").HasKey(k => k.Id);
+                u.Property(p => p.Id).HasColumnName("Id");
+                u.Property(p => p.FirstName).HasColumnName("FirstName");
+                u.Property(p => p.LastName).HasColumnName("LastName");
+                u.Property(p => p.Email).HasColumnName("Email");
+                u.Property(p => p.PasswordSalt).HasColumnName("PasswordSalt");
+                u.Property(p => p.PasswordHash).HasColumnName("PasswordHash");
+                u.Property(p => p.AuthenticatorType).HasColumnName("AuthenticatorType");
+                u.Property(p => p.Status).HasColumnName("Status");
+                u.HasMany(p => p.RefreshTokens);
+                u.HasMany(p => p.UserOperationClaims);
+            });
+
+            modelBuilder.Entity<UserOperationClaim>(uoc =>
+            {
+                uoc.ToTable("UserOperationClaims").HasKey(k => k.Id);
+                uoc.Property(p => p.UserId);
+                uoc.Property(p => p.OperationClaimId);
+
             });
         }
 

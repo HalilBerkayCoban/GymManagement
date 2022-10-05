@@ -1,16 +1,10 @@
 ﻿using AutoMapper;
-using GymManagement.Application.Dtos.Member;
 using GymManagement.Application.Features.Models;
 using GymManagement.Application.Interfaces.Paging;
 using GymManagement.Application.Requests;
 using GymManagement.Application.Interfaces.Repositories;
 using GymManagement.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymManagement.Application.Features.Members.Queries.GetAllMembers

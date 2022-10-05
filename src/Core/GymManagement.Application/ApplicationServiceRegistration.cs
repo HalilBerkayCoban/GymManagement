@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using GymManagement.Application.Features.Rules;
+using GymManagement.Application.Interfaces.AuthService;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -21,6 +22,9 @@ namespace GymManagement.Application
 
             services.AddScoped<MemberBusinessRules>();
             services.AddScoped<TrainerBusinessRules>();
+            services.AddScoped<AuthBusinessRules>();
+
+            services.AddScoped<IAuthService, AuthManager>();
 
             return services;
         }

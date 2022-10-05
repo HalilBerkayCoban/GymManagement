@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using GymManagement.Application.Dtos.Trainer;
 using GymManagement.Application.Features.Models;
 using GymManagement.Application.Interfaces.Paging;
 using GymManagement.Application.Interfaces.Repositories;
@@ -7,11 +6,6 @@ using GymManagement.Application.Requests;
 using GymManagement.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GymManagement.Application.Features.Trainers.Queries.GetAllTrainers
 {

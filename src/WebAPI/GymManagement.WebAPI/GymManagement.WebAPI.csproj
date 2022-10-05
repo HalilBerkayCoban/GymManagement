@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -16,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\GymManagement.Application\GymManagement.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\GymManagement.Infrastructure\GymManagement.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\GymManagement.Persistence\GymManagement.Persistence.csproj" />
   </ItemGroup>
 

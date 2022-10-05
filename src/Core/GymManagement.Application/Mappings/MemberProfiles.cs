@@ -6,11 +6,6 @@ using GymManagement.Application.Features.Members.Commands.UpdateMember;
 using GymManagement.Application.Features.Models;
 using GymManagement.Application.Interfaces.Paging;
 using GymManagement.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GymManagement.Application.Mappings
 {
