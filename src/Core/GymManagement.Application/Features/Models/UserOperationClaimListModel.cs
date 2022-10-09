@@ -1,5 +1,5 @@
 ﻿using GymManagement.Application.Interfaces.Paging;
-using GymManagement.Infrastructure.Entities;
+using GymManagement.Domain.Entities;
 
 namespace GymManagement.Application.Features.Models
 {

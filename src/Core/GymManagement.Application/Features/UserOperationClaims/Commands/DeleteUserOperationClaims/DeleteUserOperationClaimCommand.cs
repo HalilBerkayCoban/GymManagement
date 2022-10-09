@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using GymManagement.Application.Dtos.UserOperationClaim;
 using GymManagement.Application.Interfaces.Repositories;
-using GymManagement.Infrastructure.Authentication.Dtos.UserOperationClaim;
-using GymManagement.Infrastructure.Entities;
+using GymManagement.Domain.Entities;
 using MediatR;
 
 namespace GymManagement.Application.Features.UserOperationClaims.Commands.DeleteUserOperationClaims

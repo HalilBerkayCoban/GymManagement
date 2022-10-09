@@ -1,7 +1,6 @@
 ﻿using GymManagement.Application.Interfaces.Paging;
 using GymManagement.Application.Interfaces.Repositories;
-using GymManagement.Infrastructure.Authentication.JWT;
-using GymManagement.Infrastructure.Entities;
+using GymManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 

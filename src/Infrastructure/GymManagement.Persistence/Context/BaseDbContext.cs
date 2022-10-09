@@ -1,6 +1,5 @@
 ﻿using GymManagement.Domain.Common;
 using GymManagement.Domain.Entities;
-using GymManagement.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymManagement.Persistence.Context
@@ -62,6 +61,7 @@ namespace GymManagement.Persistence.Context
                 u.Property(p => p.FirstName).HasColumnName("FirstName");
                 u.Property(p => p.LastName).HasColumnName("LastName");
                 u.Property(p => p.Email).HasColumnName("Email");
+                u.Property(p => p.CompanyName).HasColumnName("Company");
                 u.Property(p => p.PasswordSalt).HasColumnName("PasswordSalt");
                 u.Property(p => p.PasswordHash).HasColumnName("PasswordHash");
                 u.Property(p => p.AuthenticatorType).HasColumnName("AuthenticatorType");
@@ -75,7 +75,6 @@ namespace GymManagement.Persistence.Context
                 uoc.ToTable("UserOperationClaims").HasKey(k => k.Id);
                 uoc.Property(p => p.UserId);
                 uoc.Property(p => p.OperationClaimId);
-
             });
         }
 

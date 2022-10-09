@@ -1,5 +1,5 @@
 ﻿using GymManagement.Application.Interfaces.Repositories;
-using GymManagement.Infrastructure.Entities;
+using GymManagement.Domain.Entities;
 using GymManagement.Persistence.Context;
 
 namespace GymManagement.Persistence.Repositories

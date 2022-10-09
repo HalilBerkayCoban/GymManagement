@@ -1,10 +1,9 @@
-﻿using GymManagement.Application.Features.Rules;
+﻿using GymManagement.Application.Dtos;
+using GymManagement.Application.Features.Rules;
 using GymManagement.Application.Interfaces.AuthService;
+using GymManagement.Application.Interfaces.AuthService.Hashing;
 using GymManagement.Application.Interfaces.Repositories;
-using GymManagement.Infrastructure.Authentication.Dtos.User;
-using GymManagement.Infrastructure.Authentication.Hashing;
-using GymManagement.Infrastructure.Authentication.JWT;
-using GymManagement.Infrastructure.Entities;
+using GymManagement.Domain.Entities;
 using MediatR;
 
 namespace GymManagement.Application.Features.Auths.Commands.Register

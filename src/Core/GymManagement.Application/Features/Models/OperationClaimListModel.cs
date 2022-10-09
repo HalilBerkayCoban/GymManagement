@@ -1,5 +1,5 @@
-﻿using GymManagement.Application.Interfaces.Paging;
-using GymManagement.Infrastructure.Authentication.Dtos.OperationClaim;
+﻿using GymManagement.Application.Dtos.OperationClaim;
+using GymManagement.Application.Interfaces.Paging;
 
 namespace GymManagement.Application.Features.Models
 {

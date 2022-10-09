@@ -1,4 +1,4 @@
-﻿using GymManagement.Infrastructure.Entities;
+﻿using GymManagement.Domain.Entities;
 
 namespace GymManagement.Application.Interfaces.Repositories
 {

@@ -1,4 +1,5 @@
-﻿using GymManagement.Infrastructure.Authentication.JWT;
+﻿using GymManagement.Application.Interfaces.Repositories;
+using GymManagement.Infrastructure.Authentication.JWT;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GymManagement.Infrastructure

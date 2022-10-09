@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using GymManagement.Application.Dtos.UserOperationClaim;
 using GymManagement.Application.Features.Models;
 using GymManagement.Application.Features.UserOperationClaims.Commands.CreateUserOperationClaim;
 using GymManagement.Application.Features.UserOperationClaims.Commands.DeleteUserOperationClaims;
 using GymManagement.Application.Features.UserOperationClaims.Commands.UpdateUserOperationClaims;
 using GymManagement.Application.Interfaces.Paging;
-using GymManagement.Infrastructure.Authentication.Dtos.UserOperationClaim;
-using GymManagement.Infrastructure.Entities;
+using GymManagement.Domain.Entities;
 
 namespace GymManagement.Application.Mappings
 {

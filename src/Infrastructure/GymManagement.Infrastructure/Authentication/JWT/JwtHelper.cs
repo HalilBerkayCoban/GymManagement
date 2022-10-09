@@ -1,6 +1,7 @@
-﻿using GymManagement.Infrastructure.Authentication.Encryption;
+﻿using GymManagement.Application.Interfaces.Repositories;
+using GymManagement.Domain.Entities;
+using GymManagement.Infrastructure.Authentication.Encryption;
 using GymManagement.Infrastructure.Authentication.Extensions;
-using GymManagement.Infrastructure.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

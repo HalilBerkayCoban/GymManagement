@@ -1,7 +1,7 @@
 ﻿using GymManagement.Application.Exceptions;
+using GymManagement.Application.Interfaces.AuthService.Hashing;
 using GymManagement.Application.Interfaces.Repositories;
-using GymManagement.Infrastructure.Authentication.Hashing;
-using GymManagement.Infrastructure.Entities;
+using GymManagement.Domain.Entities;
 
 namespace GymManagement.Application.Features.Rules
 {
